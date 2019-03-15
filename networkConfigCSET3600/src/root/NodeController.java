@@ -1,9 +1,7 @@
 package root;
 
-import root.hubs.HubNode;
-import root.hubs.VMandIntrfcPair;
-import root.virtualmachines.FirewallVM;
-import root.virtualmachines.HostVM;
+import root.networkobjects.HubNode;
+import root.networkobjects.VMinterfPair;
 
 import java.util.List;
 
@@ -43,7 +41,7 @@ public class NodeController {//direct gui leverageable controller: carries out b
 
         //remove gui representation then...
         HubNode thisHub = getHubNodes().get(hubIndex);//disconnect all interfaces that were attached to hub
-        List<VMandIntrfcPair> pairs = thisHub.getVMandIntrfcPairs();
+        List<VMinterfPair> pairs = thisHub.getVMandIntrfcPairs();
         for (int i =0; i<thisHub.getVMandIntrfcPairs().size(); i++){
             pairs.get(i).getIntrfce().setDisconnected();
         }
