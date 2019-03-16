@@ -13,6 +13,12 @@ public class HubInterface extends VMInterface {
     public String getSubnet(){
         return this.subnet;
     }
+    public void setNetMask(String netMask){
+        this.netMask = netMask;
+    }
+    public String getNetMask(){
+        return  this.netMask;
+    }
     public static void connectInterface(){//connects a VM interface to itself if the subnet matches
         return;
     }
