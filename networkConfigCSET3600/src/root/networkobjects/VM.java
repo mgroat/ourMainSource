@@ -11,7 +11,7 @@ public class VM {
     private String os;
     private String ver;
     private String src;
-    private List<VMinterfPair> intrfces = new List<VMinterfPair>() {
+    private List<VMinterface> intrfces = new List<VMinterface>() {
         @Override
         public int size() {
             return 0;
@@ -28,7 +28,7 @@ public class VM {
         }
 
         @Override
-        public Iterator<VMinterfPair> iterator() {
+        public Iterator<VMinterface> iterator() {
             return null;
         }
 
@@ -43,7 +43,7 @@ public class VM {
         }
 
         @Override
-        public boolean add(VMinterfPair vMinterfPair) {
+        public boolean add(VMinterface vMinterface) {
             return false;
         }
 
@@ -58,12 +58,12 @@ public class VM {
         }
 
         @Override
-        public boolean addAll(Collection<? extends VMinterfPair> c) {
+        public boolean addAll(Collection<? extends VMinterface> c) {
             return false;
         }
 
         @Override
-        public boolean addAll(int index, Collection<? extends VMinterfPair> c) {
+        public boolean addAll(int index, Collection<? extends VMinterface> c) {
             return false;
         }
 
@@ -83,22 +83,22 @@ public class VM {
         }
 
         @Override
-        public VMinterfPair get(int index) {
+        public VMinterface get(int index) {
             return null;
         }
 
         @Override
-        public VMinterfPair set(int index, VMinterfPair element) {
+        public VMinterface set(int index, VMinterface element) {
             return null;
         }
 
         @Override
-        public void add(int index, VMinterfPair element) {
+        public void add(int index, VMinterface element) {
 
         }
 
         @Override
-        public VMinterfPair remove(int index) {
+        public VMinterface remove(int index) {
             return null;
         }
 
@@ -113,29 +113,30 @@ public class VM {
         }
 
         @Override
-        public ListIterator<VMinterfPair> listIterator() {
+        public ListIterator<VMinterface> listIterator() {
             return null;
         }
 
         @Override
-        public ListIterator<VMinterfPair> listIterator(int index) {
+        public ListIterator<VMinterface> listIterator(int index) {
             return null;
         }
 
         @Override
-        public List<VMinterfPair> subList(int fromIndex, int toIndex) {
+        public List<VMinterface> subList(int fromIndex, int toIndex) {
             return null;
         }
     };//contains a list of interface labels and their ip addresses
 
 
-    VM(String name, String os, List<String> ipAddresses) {
+    VM(String name, String os, List<String> ipAddresses) {//passed from gui form
 
-        for (String ipAddress : ipAddresses) {
+        for (String ipAddress : ipAddresses) { //for each valid ip address submitted in the form, add an interface
             String intrfcLabel = "eth" + ipAddress.indexOf(ipAddress);
-            this.intrfces.add(new VMinterfPair(intrfcLabel, ipAddress));
+            this.intrfces.add(new VMinterface(intrfcLabel, ipAddress));
         }
 
+        //same version and src set for every vm: dependent on OS
         switch (os) {
             case "WINDOWS":
                 this.setOs("WINDOWS");
@@ -156,7 +157,7 @@ public class VM {
 
     public void addVMinterfPair(String intrfcLabel, String ipAddress) { //adds another interface, triggered from gui form event
 
-        this.intrfces.add(new VMinterfPair(intrfcLabel, ipAddress));
+        this.intrfces.add(new VMinterface(intrfcLabel, ipAddress));
     }
 
     public String getOs() {
@@ -190,6 +191,12 @@ public class VM {
     public void setVer(String ver) {
         this.ver = ver;
     }
+
+    public List<VMinterface> getIntrfces(){
+        return this.intrfces;
+    }
+
+
 
 }
 
