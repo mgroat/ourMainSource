@@ -2,6 +2,8 @@ package root;
 
 import root.networkobjects.HubNode;
 import root.networkobjects.VMinterfPair;
+import root.virtualmachines.HostVM;
+import root.virtualmachines.FirewallVM;
 
 import java.util.List;
 
@@ -24,8 +26,8 @@ public class NodeController {//direct gui leverageable controller: carries out b
     public void addFireWallVM(){//triggered on drag and drop from gui
         currentFWVms.add(new FirewallVM());
     }
-    public void addHub(){
-        currentHubNodes.add(new HubNode());
+    public void addHub(String name, String subnet, String netmask){
+        currentHubNodes.add(new HubNode(name, subnet, netmask));
     }
     public void removeHostVM(int hostVMindex){
         //remove gui representation then...
@@ -39,13 +41,14 @@ public class NodeController {//direct gui leverageable controller: carries out b
     }
     public void removeHubNode(int hubIndex){ //removes graphical hub and disconnects the interfaces that the hub was attached to
 
+        // FIXME: This is outdated logic and will need to be refactored.
         //remove gui representation then...
-        HubNode thisHub = getHubNodes().get(hubIndex);//disconnect all interfaces that were attached to hub
-        List<VMinterfPair> pairs = thisHub.getVMandIntrfcPairs();
-        for (int i =0; i<thisHub.getVMandIntrfcPairs().size(); i++){
-            pairs.get(i).getIntrfce().setDisconnected();
-        }
-        currentHubNodes.remove(hubIndex);
+        // HubNode thisHub = getHubNodes().get(hubIndex);//disconnect all interfaces that were attached to hub
+        // List<VMinterfPair> pairs = thisHub.getVMandIntrfcPairs();
+        // for (int i =0; i<thisHub.getVMandIntrfcPairs().size(); i++){
+        //    pairs.get(i).getIntrfce().setDisconnected();
+        // }
+        //currentHubNodes.remove(hubIndex);
     }
     public List<FirewallVM> getCurrentFWVms(){
         return this.currentFWVms;

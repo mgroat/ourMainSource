@@ -2,7 +2,7 @@ package root.networkobjects;
 
 import root.networkobjects.VM;
 
-public class HubInterface extends VM {
+public class HubInterface {
     private String subnet; //must follow constraints of a subnet mask
     private String netMask;
 

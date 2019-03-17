@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class VM {
-
     private String name; //vm alias i.e. host1
     private String os;
     private String ver;
     private String src;
+
     private List<VMinterface> intrfces = new List<VMinterface>() {
         @Override
         public int size() {
