@@ -9,9 +9,8 @@ import root.virtualmachines.*;
 import root.networkobjects.*;
 
 public class ConfigFile {
-    public static String writeFile(
-            NodeController controller) {
-        String path = "C:\\Users\\mgroa\\Desktop\\test.cfg";
+    public static String writeFile(NodeController controller) {
+        String path = ".\\test.cfg";
         String outputText = "";
         List<root.virtualmachines.HostVM> hosts = controller.getCurrentHostVms();
         for (HostVM node : hosts) {
